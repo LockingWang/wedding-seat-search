@@ -40,24 +40,20 @@
 </template>
 
 <script setup>
-import { ref, onMounted, nextTick } from 'vue'
+import { ref, nextTick } from 'vue'
+
+import guestList from '../assets/guest_list.json'
 
 const searchName = ref('')
 const result = ref(null)
-const guests = ref([])
 const showResult = ref(false)
 const fadeClass = ref('') // 用來控制動畫類名
-
-onMounted(async () => {
-  const response = await fetch('/src/assets/guest_list.json')
-  guests.value = await response.json()
-})
 
 const onSearch = async () => {
   fadeClass.value = 'fade-out' // 先淡出
   await nextTick() // 等待 DOM 更新
   setTimeout(() => {
-    result.value = guests.value.find((guest) => guest.name.includes(searchName.value))
+    result.value = guestList.find((guest) => guest.name.includes(searchName.value))
     showResult.value = true
     fadeClass.value = 'fade-in' // 淡入新結果
   }, 300) // 控制淡出時間
