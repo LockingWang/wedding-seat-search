@@ -1,6 +1,7 @@
 <template>
   <v-container class="wedding-theme">
     <h1 class="title">婚宴賓客座位查詢</h1>
+    {{ guestList }}
 
     <div v-if="!showResult" :class="['search-container', fadeClass]">
       <v-text-field
