@@ -53,7 +53,7 @@ const onSearch = async () => {
   fadeClass.value = 'fade-out' // 先淡出
   await nextTick() // 等待 DOM 更新
   setTimeout(() => {
-    result.value = guestList.find((guest) => guest.name.includes(searchName.value))
+    result.value = guestList.data.find((guest) => guest.name.includes(searchName.value))
     showResult.value = true
     fadeClass.value = 'fade-in' // 淡入新結果
   }, 300) // 控制淡出時間
