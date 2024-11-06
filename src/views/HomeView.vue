@@ -42,7 +42,7 @@
 <script setup>
 import { ref, nextTick } from 'vue'
 
-import guestList from '../assets/guest_list.json'
+import guestList from '@/assets/guest_list.json'
 
 const searchName = ref('')
 const result = ref(null)
