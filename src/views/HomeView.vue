@@ -1,8 +1,6 @@
 <template>
   <v-container class="wedding-theme">
     <h1 class="title">婚宴賓客座位查詢</h1>
-    {{ guestList }}
-
     <div v-if="!showResult" :class="['search-container', fadeClass]">
       <v-text-field
         v-model="searchName"
@@ -37,13 +35,15 @@
       或詢問現場招待人員，感恩。💍
       <v-btn color="pink" @click="resetSearch" class="back-btn">返回</v-btn>
     </v-alert>
+
+    <div class="footer-text">2024.11.07-01</div>
   </v-container>
 </template>
 
 <script setup>
 import { ref, nextTick } from 'vue'
 
-import guestList from '../../public/guest_list.json'
+import guestList from '@/assets/guest_list.json'
 
 const searchName = ref('')
 const result = ref(null)
@@ -87,7 +87,7 @@ const resetSearch = async () => {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('/src/assets/bg-img2.jpg'); /* 背景圖案 */
+  background-image: url('/src/assets/bg-img2.jpg');
   background-size: cover;
   background-position: center;
   opacity: 0.3;
@@ -156,7 +156,6 @@ const resetSearch = async () => {
   margin-top: 15px;
 }
 
-/* 定義淡入和淡出動畫 */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -200,7 +199,7 @@ const resetSearch = async () => {
 .back-btn {
   margin-top: 10px;
   color: #ffffff;
-  background-color: #d63384; /* 按鈕淡粉紅色背景 */
+  background-color: #d63384;
   width: 100%;
 }
 
@@ -219,5 +218,13 @@ const resetSearch = async () => {
 .search-btn:hover {
   background: linear-gradient(to right, #ff80ab, #ffe6f2); /* 更深的漸變色，為懸停效果 */
   box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); /* 增加陰影 */
+}
+
+.footer-text {
+  position: absolute;
+  bottom: 10%;
+  left: 0;
+  right: 0;
+  text-align: center;
 }
 </style>
