@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 import { useRoute } from 'vue-router'
 
-import { syncSheet, validateSheet } from '@/services/appsScriptApi'
+import { syncSheet, validateSheet } from '@/services/apiClient'
 
 const route = useRoute()
 const sheetUrl = ref('')

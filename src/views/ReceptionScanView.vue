@@ -1,7 +1,7 @@
 <script setup>
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
-import { checkinScan } from '@/services/appsScriptApi'
+import { checkinScan } from '@/services/apiClient'
 
 const route = useRoute()
 const qrPayload = ref('')

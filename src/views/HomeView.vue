@@ -51,7 +51,7 @@
 import { ref, nextTick } from 'vue'
 import { useRoute } from 'vue-router'
 
-import { publicSearch } from '@/services/appsScriptApi'
+import { publicSearch } from '@/services/apiClient'
 
 const route = useRoute()
 const searchName = ref('')

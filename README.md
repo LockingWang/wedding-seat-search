@@ -7,6 +7,8 @@
 - 公開查詢頁、接待簽到頁、接待人員頁
 - 簽到統計、接待連結管理、QR 流程骨架
 
+> 後端方向已改為自製 server（部署到 EC2）。前端使用通用 API base URL 串接。
+
 ## 1. 開發環境需求
 
 - Node.js 18+
@@ -29,7 +31,7 @@ npm run dev
 
 ```env
 VITE_API_MODE=auto
-VITE_APPS_SCRIPT_BASE_URL=
+VITE_API_BASE_URL=
 ```
 
 ### `VITE_API_MODE`
@@ -38,11 +40,11 @@ VITE_APPS_SCRIPT_BASE_URL=
 - `api`：只呼叫 API（失敗不 fallback）
 - `auto`：先呼叫 API，失敗時 fallback mock（建議開發預設）
 
-### `VITE_APPS_SCRIPT_BASE_URL`
+### `VITE_API_BASE_URL`
 
-Google Apps Script Web App 的 API base URL。  
+自製後端（EC2）API base URL。  
 例如：
-`https://script.google.com/macros/s/xxxxxxxxxxxx/exec`
+`https://api.your-domain.com`
 
 ## 4. 常用指令
 
@@ -96,9 +98,10 @@ npm run preview
 
 - 專案已具備完整前端流程與 mock 演練能力
 - 若要切真實後端，只需：
-  1. 設好 `VITE_APPS_SCRIPT_BASE_URL`
+  1. 設好 `VITE_API_BASE_URL`
   2. 將 `VITE_API_MODE` 切到 `api` 或 `auto`
 
 ## 8. 文件
 
 - 產品企劃書：`PROJECT_PROPOSAL.md`
+- Google Sheet 規格書：`GOOGLE_SHEET_SCHEMA_SPEC.md`

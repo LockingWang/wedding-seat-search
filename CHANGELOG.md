@@ -15,7 +15,7 @@ All notable changes to this project are documented in this file.
 
 ### Changed
 - `README.md` 由模板改寫為可交接文件（啟動流程、環境切換、測試路徑）。
-- `src/services/appsScriptApi.js` 重構為統一 API/Mock 模式與 fallback 行為。
+- `src/services/apiClient.js` 重構為統一 API/Mock 模式與 fallback 行為。
 - `src/views` 多數頁面補齊 loading/error/empty 狀態。
 - `.gitignore` 增加 `.env` 系列忽略規則，保留 `.env.example`。
 

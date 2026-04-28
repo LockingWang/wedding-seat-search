@@ -10,7 +10,7 @@
 - 完成接待簽到流程（掃碼頁 + 手動簽到頁）與核心 UX 補強。
 
 ### New
-- `src/services/appsScriptApi.js`
+- `src/services/apiClient.js`
   - API call 與 fallback mock 統一封裝。
   - 新增 OTP、Sheet、LINE 分享、簽到等方法。
 - `src/stores/auth.js`
