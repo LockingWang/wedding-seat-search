@@ -10,7 +10,14 @@
         variant="outlined"
         hide-details
       ></v-text-field>
-      <v-btn @click="onSearch" class="search-btn" outlined> 搜尋 </v-btn>
+      <v-btn
+        @click="onSearch"
+        class="search-btn"
+        outlined
+        :disabled="!searchName || isSearching"
+      >
+        搜尋
+      </v-btn>
     </div>
 
     <div v-else-if="showResult && result" :class="['result-card', fadeClass]">
@@ -42,25 +49,42 @@
 
 <script setup>
 import { ref, nextTick } from 'vue'
+import { useRoute } from 'vue-router'
 
-import guestList from '@/assets/guest_list.json'
+import { publicSearch } from '@/services/appsScriptApi'
 
+const route = useRoute()
 const searchName = ref('')
 const result = ref(null)
 const showResult = ref(false)
 const fadeClass = ref('') // 用來控制動畫類名
+const isSearching = ref(false)
+const searchSeq = ref(0)
 
 const onSearch = async () => {
+  if (isSearching.value) return
+  isSearching.value = true
+  searchSeq.value += 1
+  const currentSeq = searchSeq.value
   fadeClass.value = 'fade-out' // 先淡出
   await nextTick() // 等待 DOM 更新
-  setTimeout(() => {
-    result.value = guestList.data.find((guest) => guest.name.includes(searchName.value))
+
+  const name = searchName.value
+  const eventSlug = route.params.eventSlug
+
+  // 控制淡出時間（維持你原本節奏）
+  setTimeout(async () => {
+    if (currentSeq !== searchSeq.value) return
+    result.value = await publicSearch(eventSlug, { name })
     showResult.value = true
     fadeClass.value = 'fade-in' // 淡入新結果
+    isSearching.value = false
   }, 300) // 控制淡出時間
 }
 
 const resetSearch = async () => {
+  isSearching.value = false
+  searchSeq.value += 1
   fadeClass.value = 'fade-out' // 先淡出
   await nextTick()
   setTimeout(() => {
