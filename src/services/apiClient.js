@@ -1,6 +1,6 @@
 import guestList from '@/assets/guest_list.json'
 
-const API_BASE_URL = import.meta.env.VITE_APPS_SCRIPT_BASE_URL || ''
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || import.meta.env.VITE_APPS_SCRIPT_BASE_URL || ''
 const API_MODE = (import.meta.env.VITE_API_MODE || 'auto').toLowerCase()
 const FORCE_MOCK = API_MODE === 'mock'
 const FORCE_API = API_MODE === 'api'
@@ -88,7 +88,6 @@ function withEventSlug(url, eventSlug) {
   return `${url}${separator}eventSlug=${encodeURIComponent(eventSlug)}`
 }
 
-// Public guest search (fallback to local guest_list.json)
 export async function publicSearch(eventSlug, { name }) {
   const normalized = normalizeName(name)
   if (!normalized) return null
@@ -326,4 +325,3 @@ export async function checkinManual(eventSlug, token, guestKey) {
     },
   )
 }
-

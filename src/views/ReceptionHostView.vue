@@ -1,7 +1,7 @@
 <script setup>
 import { computed, onMounted, ref } from 'vue'
 import { useRoute } from 'vue-router'
-import { checkinManual, getReceptionGuests } from '@/services/appsScriptApi'
+import { checkinManual, getReceptionGuests } from '@/services/apiClient'
 
 const route = useRoute()
 const side = ref('all')

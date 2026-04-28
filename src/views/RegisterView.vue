@@ -1,7 +1,7 @@
 <script setup>
 import { ref } from 'vue'
 import { useRouter } from 'vue-router'
-import { authRegister, authSendOtp, authVerifyOtp } from '@/services/appsScriptApi'
+import { authRegister, authSendOtp, authVerifyOtp } from '@/services/apiClient'
 import { isMockAvailable } from '@/utils/runtimeMode'
 
 const router = useRouter()

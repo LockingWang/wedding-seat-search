@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 import { useRoute } from 'vue-router'
 
-import { createLineShareLink } from '@/services/appsScriptApi'
+import { createLineShareLink } from '@/services/apiClient'
 
 const route = useRoute()
 const lineShareText = ref('')

@@ -1,7 +1,7 @@
 <script setup>
 import { computed, onBeforeUnmount, ref } from 'vue'
 import { useRoute } from 'vue-router'
-import { getReceptionGuests, getReceptionLinks } from '@/services/appsScriptApi'
+import { getReceptionGuests, getReceptionLinks } from '@/services/apiClient'
 
 const route = useRoute()
 const loading = ref(false)
